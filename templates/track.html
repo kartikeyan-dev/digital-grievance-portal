@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Complaint - Public Grievance Portal</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ✅ NAVBAR -->
+<nav class="navbar navbar-expand-lg gov-navbar">
+    <div class="container">
+        <span class="navbar-brand text-white fw-bold">
+            🇮🇳 Public Grievance Portal
+        </span>
+
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link text-white" href="/">Home</a>
+            <a class="nav-link text-white" href="/submit">Submit</a>
+            <a class="nav-link text-white active" href="/track">Track</a>
+            <a class="nav-link text-white" href="/login">Admin</a>
+        </div>
+    </div>
+</nav>
+
+<div class="gov-strip"></div>
+
+<!-- ✅ MAIN CONTENT -->
+<div class="container mt-5">
+    <div class="col-md-6 offset-md-3">
+
+        <div class="gov-card shadow-sm">
+
+            <!-- Title -->
+            <h4 class="section-title text-center mb-3">
+                Track Your Complaint
+            </h4>
+
+            <!-- ERROR MESSAGE -->
+            {% if error %}
+            <div class="alert alert-danger text-center">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <!-- SHOW DETAILS -->
+            {% if complaint %}
+            <div class="border p-3">
+
+                <p><strong>Complaint ID:</strong> {{ complaint.complaint_id }}</p>
+                <p><strong>Name:</strong> {{ complaint.name }}</p>
+                <p><strong>Location:</strong> {{ complaint.location }}</p>
+                <p><strong>Category:</strong> {{ complaint.category }}</p>
+                <p><strong>Description:</strong> {{ complaint.description }}</p>
+
+                <p><strong>Status:</strong>
+                    {% if complaint.status == 'Pending' %}
+                        <span class="badge bg-secondary">Pending</span>
+                    {% elif complaint.status == 'In Progress' %}
+                        <span class="badge bg-warning text-dark">In Progress</span>
+                    {% elif complaint.status == 'Resolved' %}
+                        <span class="badge bg-success">Resolved</span>
+                    {% endif %}
+                </p>
+
+            </div>
+
+            <!-- BACK BUTTON -->
+            <a href="/track" class="btn btn-outline-primary w-100 mt-3">
+                Track Another Complaint
+            </a>
+
+            {% else %}
+            <!-- FORM -->
+            <form method="post">
+
+                <div class="mb-3">
+                    <label class="form-label">Complaint ID</label>
+                    <input type="text" name="complaint_id" class="form-control" required placeholder="Enter your complaint ID">
+                </div>
+
+                <button type="submit" class="btn btn-gov w-100">
+                    Track Complaint
+                </button>
+
+            </form>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+<!-- ✅ FOOTER -->
+<footer class="text-center mt-5 p-3" style="background:#0b3d91; color:white;">
+    © 2026 Public Grievance Portal
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

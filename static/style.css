@@ -1,0 +1,131 @@
+/* ================================
+   Public Grievance Portal - Styles
+================================ */
+
+/* Body */
+body {
+    background-color: #f1f3f6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ================================
+   HEADER / NAVBAR
+================================ */
+
+.gov-navbar {
+    background-color: #0b3d91;
+}
+
+.gov-strip {
+    height: 4px;
+    background-color: #ff9933;
+}
+
+/* Navbar links */
+.navbar .nav-link {
+    color: white !important;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.navbar .nav-link:hover {
+    text-decoration: underline;
+}
+
+/* ================================
+   CARDS / CONTAINERS
+================================ */
+
+.gov-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+/* Optional shadow enhancement */
+.shadow-sm {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08) !important;
+}
+
+/* ================================
+   TITLES
+================================ */
+
+.section-title {
+    color: #0b3d91;
+    font-weight: bold;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.btn-gov {
+    background-color: #0b3d91;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Hover (mouse touch effect) */
+.btn-gov:hover {
+    background-color: #ff9933;   /* saffron */
+    color: black;
+    transform: translateY(-2px);
+}
+
+/* Click effect */
+.btn-gov:active {
+    transform: scale(0.97);
+}
+
+/* ================================
+   TABLE (ADMIN PAGE)
+================================ */
+
+.table th {
+    vertical-align: middle;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* ================================
+   STATUS BADGES
+================================ */
+
+.badge {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+}
+
+/* ================================
+   FORMS
+================================ */
+
+.form-control,
+.form-select {
+    border-radius: 4px;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+    font-size: 14px;
+}
+
+/* ================================
+   IMAGES (EMBLEM)
+================================ */
+
+img {
+    object-fit: contain;
+}

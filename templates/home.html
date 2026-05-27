@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Public Grievance Portal</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .notification-box {
+            height: 80vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg gov-navbar">
+    <div class="container">
+        <span class="navbar-brand text-white fw-bold">
+            🇮🇳 Public Grievance Portal
+        </span>
+
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link text-white" href="/">Home</a>
+            <a class="nav-link text-white" href="/submit">Submit</a>
+            <a class="nav-link text-white" href="/track">Track</a>
+            <a class="nav-link text-white" href="/login">Admin</a>
+        </div>
+    </div>
+</nav>
+
+<div class="gov-strip"></div>
+
+<!-- MAIN LAYOUT -->
+<div class="container mt-4">
+    <div class="row">
+
+        <!-- LEFT SIDE (MAIN CONTENT) -->
+        <div class="col-md-9">
+
+            <div class="gov-card shadow-sm p-4">
+
+                <h2 class="section-title">
+                    Public Grievance Redressal System
+                </h2>
+
+                <p class="mt-3">
+                    This portal allows citizens to register complaints and track their resolution status efficiently.
+                </p>
+
+                <div class="mt-3">
+                    <a href="/submit" class="btn btn-primary">Lodge Complaint</a>
+                    <a href="/track" class="btn btn-outline-primary">Track Complaint</a>
+                </div>
+
+            </div>
+
+            <!-- FEATURES -->
+            <div class="row text-center mt-4">
+
+                <div class="col-md-4 mb-4">
+                    <div class="card p-4 shadow-sm">
+                        <h4>📩 Easy Submission</h4>
+                        <p>Quickly submit complaints with a simple form.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card p-4 shadow-sm">
+                        <h4>🔍 Track Status</h4>
+                        <p>Check real-time complaint status using ID.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card p-4 shadow-sm">
+                        <h4>📊 Transparency</h4>
+                        <p>Ensures accountability in grievance handling.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE (NOTIFICATIONS SIDEBAR) -->
+        <div class="col-md-3">
+
+            <div class="card p-3 shadow-sm notification-box">
+
+                <h5>🔔 Notifications</h5>
+                <hr>
+
+                {% if notifications and notifications|length > 0 %}
+
+                    {% for n in notifications %}
+                        <div class="alert alert-info p-2 mb-2">
+
+                            <small>{{ n.message }}</small>
+                            <br>
+
+                            <small class="text-muted">
+                                {{ n.time }}
+                            </small>
+
+                        </div>
+                    {% endfor %}
+
+                {% else %}
+                    <p class="text-muted">No notifications yet</p>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="text-center mt-5 p-3 bg-dark text-white">
+    <p class="mb-0">© 2026 Digital Grievance Portal | Built with Flask & MongoDB</p>
+</footer>
+
+</body>
+</html>
