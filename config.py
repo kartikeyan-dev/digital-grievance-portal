@@ -1,10 +1,10 @@
+import os
 from pymongo import MongoClient
 
-SECRET_KEY = "secret123"
-MONGO_URI = "mongodb://localhost:27017/"
-DB_NAME = "grievance_portal"
+MONGO_URI = os.getenv("MONGO_URI")
+SECRET_KEY = os.getenv("SECRET_KEY", "secret123")
 
 client = MongoClient(MONGO_URI)
-db = client[DB_NAME]
+db = client["grievance_portal"]
 
-complaints_collection = db["complaints"]
+complaints = db["complaints"]
